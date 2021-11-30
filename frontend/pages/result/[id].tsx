@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
 
+/**
+ * ![](https://user-images.githubusercontent.com/25210925/144118833-40a00919-e871-490d-a9c8-60b0c64169a7.png)
+ */
 const ResultPage = () => {
   const router = useRouter();
 
