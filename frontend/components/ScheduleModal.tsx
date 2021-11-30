@@ -14,7 +14,7 @@ const ScheduleModal = ({ show, handleShow }: ScheduleModalProps) => {
         <Modal.Title>Agendar Cita</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form method="POST">
           <Form.Group controlId="testType">
             <Form.Label>Tipo de Examen</Form.Label>
             <Form.Select placeholder="Elija el tipo de examen">
