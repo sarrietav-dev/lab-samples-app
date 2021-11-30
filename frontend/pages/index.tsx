@@ -1,6 +1,12 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
+import ScheduleModal from '../components/ScheduleModal';
 
 const UserHome: NextPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShow = () => setShowModal(true);
+
   return (
     <div style={{ height: '100vh' }}>
       <nav className="navbar navbar-dark bg-primary">
@@ -29,10 +35,13 @@ const UserHome: NextPage = () => {
           </tbody>
         </table>
         <div className="d-flex flex-column">
-          <button className="btn btn-primary my-2">Agendar Cita</button>
+          <button className="btn btn-primary my-2" onClick={handleShow}>
+            Agendar Cita
+          </button>
           <button className="btn btn-info my-2">Ver Resultados</button>
         </div>
       </div>
+      <ScheduleModal show={showModal} handleShow={setShowModal} />
     </div>
   );
 };
