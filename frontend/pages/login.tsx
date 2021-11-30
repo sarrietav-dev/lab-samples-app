@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button, Form } from 'react-bootstrap';
 
 const LoginPage = () => {
@@ -16,10 +17,15 @@ const LoginPage = () => {
         <Form.Control type="password" placeholder="Contraseña" />
       </Form.Group>
       <Form.Group className="d-flex justify-content-between">
-        <Button type="submit" variant="primary">
-          Ingresar
-        </Button>
-        <Button variant="outline-info">Registrarse</Button>
+        <Link href={"/"}>
+          <a className="btn btn-primary">
+            Ingresar
+          </a>
+        </Link>
+        <Link href={"/signup"}>
+          <a className="btn btn-outline-info">
+            Registrarse</a>
+        </Link>
       </Form.Group>
     </Form>
   );
