@@ -1,4 +1,4 @@
-import { Modal } from 'react-bootstrap';
+import { Modal, Table } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -37,7 +37,7 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
         <Modal.Title>Agendar Cita</Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ maxHeight: '11rem' }} className="overflow-scroll">
-        <table className="table table-hover">
+        <Table hover>
           <thead>
             <tr>
               <th scope="col">Fecha</th>
@@ -59,7 +59,7 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </Modal.Body>
       <Modal.Footer>
         <Link href={`/result/${encodeURIComponent(activeRow)}`}>
