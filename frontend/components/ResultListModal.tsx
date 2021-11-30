@@ -1,4 +1,6 @@
 import { Button, Modal } from 'react-bootstrap';
+import { nanoid } from 'nanoid';
+import { useMemo, useState } from 'react';
 
 interface ResultListProps {
   show: boolean;
@@ -6,6 +8,16 @@ interface ResultListProps {
 }
 
 const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
+  const [activeRow, setActiveRow] = useState('');
+
+  const results: { id: string; date: string; testType: string }[] =
+    useMemo(() => {
+      return [
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+      ];
+    }, []);
+
   const handleClose = () => handleShow(false);
 
   return (
@@ -22,14 +34,19 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">9/9/9</th>
-              <td>Sangre</td>
-            </tr>
-            <tr>
-              <th scope="row">10/10/10</th>
-              <td>Sangre</td>
-            </tr>
+            {results.map((item) => {
+              const handleOnClick = () => setActiveRow(item.id);
+              return (
+                <tr
+                  key={item.id}
+                  onClick={handleOnClick}
+                  className={`${activeRow === item.id ? 'table-primary' : ''}`}
+                >
+                  <th scope="row">{item.date}</th>
+                  <td>{item.testType}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </Modal.Body>
