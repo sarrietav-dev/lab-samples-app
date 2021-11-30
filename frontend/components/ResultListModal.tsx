@@ -35,7 +35,7 @@ const ResultsListModal = ({ show, handleClose }: ResultListProps) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Agendar Cita</Modal.Title>
+        <Modal.Title>Selecciona una cita</Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ maxHeight: '11rem' }} className="overflow-scroll">
         <Table hover>
