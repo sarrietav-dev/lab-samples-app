@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button, Form } from 'react-bootstrap';
 
 const SignupPage = () => (
@@ -23,7 +24,9 @@ const SignupPage = () => (
       <Form.Control type="password" placeholder="Validar Contraseña" />
     </Form.Group>
     <Form.Group className="d-flex flex-column ">
-      <Button variant="primary">Registrarse</Button>
+      <Link href={'/'}>
+        <a className="btn btn-primary">Registrarse</a>
+      </Link>
     </Form.Group>
   </Form>
 );
