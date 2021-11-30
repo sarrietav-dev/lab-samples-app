@@ -5,7 +5,7 @@ const LoginPage = () => {
     <Form
       method="POST"
       className="vh-100 d-flex flex-column justify-content-center"
-      style={{ padding: '14rem' }}
+      style={{ padding: '4rem' }}
     >
       <Form.Group controlId="email" className="mt-3 mb-3">
         <Form.Label>Correo Electronico</Form.Label>
