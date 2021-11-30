@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { Navbar, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import Navbar from '../../components/Navbar';
 
 /**
  * ![](https://user-images.githubusercontent.com/25210925/144118833-40a00919-e871-490d-a9c8-60b0c64169a7.png)
@@ -11,11 +12,7 @@ const ResultPage = () => {
 
   return (
     <div style={{ height: '100vh' }}>
-      <Navbar bg="primary" variant="dark">
-        <Container fluid>
-          <Navbar.Brand>Laboratorio</Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Navbar />
       <main className="p-4">
         <h1>{id}</h1>
         <Container className="d-flex flex-column my-5">
