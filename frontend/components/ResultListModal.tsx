@@ -1,4 +1,4 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -44,7 +44,7 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
               <th scope="col">Tipo de examen</th>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
             {results.map((item) => {
               const handleOnClick = () => setActiveRow(item.id);
               return (
