@@ -34,7 +34,7 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
         </table>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary">Agendar</Button>
+        <Button variant="primary">Consultar</Button>
       </Modal.Footer>
     </Modal>
   );
