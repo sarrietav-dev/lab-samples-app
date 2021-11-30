@@ -3,11 +3,10 @@ import { Button, Form, Modal } from 'react-bootstrap';
 
 interface ScheduleModalProps {
   show: boolean;
-  handleShow: (show: boolean) => void;
+  handleClose: () => void;
 }
 
-const ScheduleModal = ({ show, handleShow }: ScheduleModalProps) => {
-  const handleClose = () => handleShow(false);
+const ScheduleModal = ({ show, handleClose }: ScheduleModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleFormSubmit = () => formRef.current?.submit();

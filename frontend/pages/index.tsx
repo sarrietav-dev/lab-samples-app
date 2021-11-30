@@ -1,15 +1,31 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { Button, Container, Navbar, Table } from 'react-bootstrap';
 import ResultsListModal from '../components/ResultListModal';
 import ScheduleModal from '../components/ScheduleModal';
 
-const UserHome: NextPage = () => {
-  const [showScheduleModal, setShowScheduleModal] = useState(false);
-  const [showResultListModal, setResultListModal] = useState(false);
+interface ModalState {
+  showScheduleModal: boolean;
+  showResultListModal: boolean;
+}
 
-  const handleShowScheduleModal = () => setShowScheduleModal(true);
-  const handleShowResultsListModal = () => setResultListModal(true);
+const UserHome: NextPage = () => {
+  const [state, dispatch] = useReducer(modalReducer, {
+    showResultListModal: false,
+    showScheduleModal: false,
+  });
+
+  /**
+   * Opens a given Modal
+   */
+  const handleShowModal = (modal: 'SCHEDULE' | 'RESULT_LIST') =>
+    dispatch({ type: 'SHOW', payload: modal });
+
+  /**
+   * Closes a given Modal
+   */
+  const handleCloseModal = (modal: 'SCHEDULE' | 'RESULT_LIST') =>
+    dispatch({ type: 'CLOSE', payload: modal });
 
   return (
     <div style={{ height: '100vh' }}>
@@ -42,29 +58,52 @@ const UserHome: NextPage = () => {
           <Button
             variant="primary"
             className="my-2"
-            onClick={handleShowScheduleModal}
+            onClick={() => handleShowModal('SCHEDULE')}
           >
             Agendar Cita
           </Button>
           <Button
             variant="info"
             className="my-2"
-            onClick={handleShowResultsListModal}
+            onClick={() => handleShowModal('RESULT_LIST')}
           >
             Ver Resultados
           </Button>
         </div>
       </div>
       <ScheduleModal
-        show={showScheduleModal}
-        handleShow={setShowScheduleModal}
+        show={state.showScheduleModal}
+        handleClose={() => handleCloseModal('SCHEDULE')}
       />
       <ResultsListModal
-        show={showResultListModal}
-        handleShow={setResultListModal}
+        show={state.showResultListModal}
+        handleClose={() => handleCloseModal('RESULT_LIST')}
       />
     </div>
   );
 };
+
+/**
+ * Controls the state of the modals
+ * @param action The types can be **SHOW** to show the modal, **CLOSE** to close it.
+ * And the payload handles witch of the two modals is going to be used.\
+ * **SCHEDULE**: For {@link ScheduleModal}\
+ * **RESULT_LIST**: For {@link ResultsListModal}
+ */
+function modalReducer(
+  state: ModalState,
+  action: { type: 'SHOW' | 'CLOSE'; payload: 'SCHEDULE' | 'RESULT_LIST' },
+): ModalState {
+  switch (action.type) {
+    case 'SHOW':
+      if (action.payload === 'SCHEDULE')
+        return { ...state, showScheduleModal: true };
+      else return { ...state, showResultListModal: true };
+    case 'CLOSE':
+      if (action.payload === 'SCHEDULE')
+        return { ...state, showScheduleModal: false };
+      else return { ...state, showResultListModal: false };
+  }
+}
 
 export default UserHome;

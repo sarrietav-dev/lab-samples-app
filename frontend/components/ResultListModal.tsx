@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 interface ResultListProps {
   show: boolean;
-  handleShow: (show: boolean) => void;
+  handleClose: (show: boolean) => void;
 }
 
-const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
+const ResultsListModal = ({ show, handleClose }: ResultListProps) => {
   const [activeRow, setActiveRow] = useState('');
 
   const results: { id: string; date: string; testType: string }[] =
@@ -28,8 +28,6 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
         { id: nanoid(), date: '10/10/10', testType: 'Orina' },
       ];
     }, []);
-
-  const handleClose = () => handleShow(false);
 
   return (
     <Modal show={show} onHide={handleClose}>
