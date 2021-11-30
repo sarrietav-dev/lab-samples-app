@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 interface ScheduleModalProps {
@@ -7,6 +8,9 @@ interface ScheduleModalProps {
 
 const ScheduleModal = ({ show, handleShow }: ScheduleModalProps) => {
   const handleClose = () => handleShow(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleFormSubmit = () => formRef.current?.submit();
 
   return (
     <Modal backdrop="static" show={show}>
@@ -14,7 +18,7 @@ const ScheduleModal = ({ show, handleShow }: ScheduleModalProps) => {
         <Modal.Title>Agendar Cita</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form method="POST">
+        <Form method="POST" ref={formRef}>
           <Form.Group controlId="testType">
             <Form.Label>Tipo de Examen</Form.Label>
             <Form.Select placeholder="Elija el tipo de examen">
@@ -33,7 +37,7 @@ const ScheduleModal = ({ show, handleShow }: ScheduleModalProps) => {
         <Button variant="secondary" onClick={handleClose}>
           Cancelar
         </Button>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" onClick={handleFormSubmit}>
           Agendar
         </Button>
       </Modal.Footer>
