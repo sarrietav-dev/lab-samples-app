@@ -8,6 +8,9 @@ interface ResultListProps {
   handleClose: (show: boolean) => void;
 }
 
+/**
+ * ![image](https://user-images.githubusercontent.com/25210925/144107403-1f931dc2-45a4-4ed3-bcac-61f4d1ddce03.png)
+ */
 const ResultsListModal = ({ show, handleClose }: ResultListProps) => {
   const [activeRow, setActiveRow] = useState('');
 

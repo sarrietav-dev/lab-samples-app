@@ -6,6 +6,9 @@ interface ScheduleModalProps {
   handleClose: () => void;
 }
 
+/**
+ * ![](https://user-images.githubusercontent.com/25210925/144108556-f9b167da-41e1-4542-90c0-691435458530.png)
+ */
 const ScheduleModal = ({ show, handleClose }: ScheduleModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
 

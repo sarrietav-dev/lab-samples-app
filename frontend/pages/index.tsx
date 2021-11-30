@@ -9,6 +9,10 @@ interface ModalState {
   showResultListModal: boolean;
 }
 
+/**
+ * The main page that an external user sees.\
+ * ![image](https://user-images.githubusercontent.com/25210925/144107131-2d333492-6c67-4511-b772-a9b6b6a21896.png)
+ */
 const UserHome: NextPage = () => {
   const [state, dispatch] = useReducer(modalReducer, {
     showResultListModal: false,
@@ -31,7 +35,7 @@ const UserHome: NextPage = () => {
     <div style={{ height: '100vh' }}>
       <Navbar bg="primary" variant="dark">
         <Container fluid>
-          <Navbar.Brand>Lab</Navbar.Brand>
+          <Navbar.Brand>Laboratorio</Navbar.Brand>
         </Container>
       </Navbar>
       <div className="d-flex h-100 flex-column align-items-center justify-content-evenly">
