@@ -18,10 +18,7 @@ const ResultPage = () => {
         <Container className="d-flex flex-column my-5">
           <Row className="align-items-center">
             <Col className="col-auto">
-              <i
-                className="bi bi-person-circle"
-                style={{ fontSize: '2rem' }}
-              ></i>
+              <BiIcon iconClass="person-circle" />
             </Col>
             <Col>
               <span>David Null</span>
@@ -29,7 +26,7 @@ const ResultPage = () => {
           </Row>
           <Row className="align-items-center">
             <Col className="col-auto">
-              <i className="bi bi-clock" style={{ fontSize: '2rem' }}></i>
+              <BiIcon iconClass="clock" />
             </Col>
             <Col>
               <span>Noviembre 16, 2021. 9:00 A.M</span>
@@ -37,10 +34,7 @@ const ResultPage = () => {
           </Row>
           <Row className="align-items-center">
             <Col className="col-auto">
-              <i
-                className="bi bi-file-medical"
-                style={{ fontSize: '2rem' }}
-              ></i>
+              <BiIcon iconClass="file-medical" />
             </Col>
             <Col>
               <span>Sangre</span>
@@ -58,5 +52,12 @@ const ResultPage = () => {
     </div>
   );
 };
+
+/**
+ * Bootstrap Icon
+ */
+const BiIcon = ({ iconClass }: { iconClass: string }) => (
+  <i className={`bi bi-${iconClass}`} style={{ fontSize: '2rem' }}></i>
+);
 
 export default ResultPage;
