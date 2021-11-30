@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 import { useState } from 'react';
+import ResultsListModal from '../components/ResultListModal';
 import ScheduleModal from '../components/ScheduleModal';
 
 const UserHome: NextPage = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
+  const [showResultListModal, setResultListModal] = useState(false);
 
-  const handleShow = () => setShowModal(true);
+  const handleShowScheduleModal = () => setShowScheduleModal(true);
+  const handleShowResultsListModal = () => setResultListModal(true);
 
   return (
     <div style={{ height: '100vh' }}>
@@ -35,13 +38,28 @@ const UserHome: NextPage = () => {
           </tbody>
         </table>
         <div className="d-flex flex-column">
-          <button className="btn btn-primary my-2" onClick={handleShow}>
+          <button
+            className="btn btn-primary my-2"
+            onClick={handleShowScheduleModal}
+          >
             Agendar Cita
           </button>
-          <button className="btn btn-info my-2">Ver Resultados</button>
+          <button
+            className="btn btn-info my-2"
+            onClick={handleShowResultsListModal}
+          >
+            Ver Resultados
+          </button>
         </div>
       </div>
-      <ScheduleModal show={showModal} handleShow={setShowModal} />
+      <ScheduleModal
+        show={showScheduleModal}
+        handleShow={setShowScheduleModal}
+      />
+      <ResultsListModal
+        show={showResultListModal}
+        handleShow={setResultListModal}
+      />
     </div>
   );
 };
