@@ -12,7 +12,14 @@ interface ScheduleModalProps {
 const ScheduleModal = ({ show, handleClose }: ScheduleModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleFormSubmit = () => formRef.current?.submit();
+  /**
+   * The submit button is outside of the form element,
+   * so I'm using refs to submiting when that button gets clicked.
+   */
+  const handleFormSubmit = () => {
+    formRef.current?.submit();
+    handleClose();
+  };
 
   return (
     <Modal backdrop="static" show={show}>
