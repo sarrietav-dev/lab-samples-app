@@ -1,6 +1,7 @@
 import { Button, Modal } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 
 interface ResultListProps {
   show: boolean;
@@ -51,7 +52,9 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
         </table>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary">Consultar</Button>
+        <Link href={`/result/${encodeURIComponent(activeRow)}`}>
+          <a className="btn btn-primary">Consultar</a>
+        </Link>
       </Modal.Footer>
     </Modal>
   );
