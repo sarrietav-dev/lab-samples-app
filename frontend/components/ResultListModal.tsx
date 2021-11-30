@@ -16,6 +16,16 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
       return [
         { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
         { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '9/9/9', testType: 'Sangre' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
+        { id: nanoid(), date: '10/10/10', testType: 'Orina' },
       ];
     }, []);
 
@@ -26,15 +36,15 @@ const ResultsListModal = ({ show, handleShow }: ResultListProps) => {
       <Modal.Header closeButton>
         <Modal.Title>Agendar Cita</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <table className="table table-hover ">
+      <Modal.Body style={{ maxHeight: '11rem' }} className="overflow-scroll">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">Fecha</th>
               <th scope="col">Tipo de examen</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {results.map((item) => {
               const handleOnClick = () => setActiveRow(item.id);
               return (
