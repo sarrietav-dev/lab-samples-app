@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Container, Row, Col } from 'react-bootstrap';
-import Navbar from '../../components/Navbar';
+import TheNavbar from '../../components/TheNavbar';
 
 /**
  * ![](https://user-images.githubusercontent.com/25210925/144118833-40a00919-e871-490d-a9c8-60b0c64169a7.png)
@@ -12,7 +12,7 @@ const ResultPage = () => {
 
   return (
     <div style={{ height: '100vh' }}>
-      <Navbar />
+      <TheNavbar />
       <main className="p-4">
         <h1>{id}</h1>
         <Container className="d-flex flex-column my-5">

@@ -1,6 +1,6 @@
 import { Navbar as BNavbar, Container } from 'react-bootstrap';
 
-const Navbar = () => (
+const TheNavbar = () => (
   <BNavbar bg="primary" variant="dark">
     <Container fluid>
       <BNavbar.Brand>Laboratorio</BNavbar.Brand>
@@ -8,4 +8,4 @@ const Navbar = () => (
   </BNavbar>
 );
 
-export default Navbar;
+export default TheNavbar;

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useReducer } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import Navbar from '../components/Navbar';
+import TheNavbar from '../components/TheNavbar';
 import ResultsListModal from '../components/ResultListModal';
 import ScheduleModal from '../components/ScheduleModal';
 
@@ -34,7 +34,7 @@ const UserHome: NextPage = () => {
 
   return (
     <div style={{ height: '100vh' }}>
-      <Navbar />
+      <TheNavbar />
       <div className="d-flex h-100 flex-column align-items-center justify-content-evenly">
         <h1>Bienvenido, David Null</h1>
         <Table hover className="mx-4">
