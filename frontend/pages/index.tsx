@@ -23,13 +23,13 @@ const UserHome: NextPage = () => {
   /**
    * Opens a given Modal
    */
-  const handleShowModal = (modal: 'SCHEDULE' | 'RESULT_LIST') =>
+  const handleShowModal = (modal: UserModalType) =>
     dispatch({ type: 'SHOW', payload: modal });
 
   /**
    * Closes a given Modal
    */
-  const handleCloseModal = (modal: 'SCHEDULE' | 'RESULT_LIST') =>
+  const handleCloseModal = (modal: UserModalType) =>
     dispatch({ type: 'CLOSE', payload: modal });
 
   return (
@@ -59,14 +59,14 @@ const UserHome: NextPage = () => {
           <Button
             variant="primary"
             className="my-2"
-            onClick={() => handleShowModal('SCHEDULE')}
+            onClick={() => handleShowModal(UserModalType.Schedule)}
           >
             Agendar Cita
           </Button>
           <Button
             variant="info"
             className="my-2"
-            onClick={() => handleShowModal('RESULT_LIST')}
+            onClick={() => handleShowModal(UserModalType.ResultList)}
           >
             Ver Resultados
           </Button>
@@ -74,15 +74,19 @@ const UserHome: NextPage = () => {
       </div>
       <ScheduleModal
         show={state.showScheduleModal}
-        handleClose={() => handleCloseModal('SCHEDULE')}
+        handleClose={() => handleCloseModal(UserModalType.Schedule)}
       />
       <ResultsListModal
         show={state.showResultListModal}
-        handleClose={() => handleCloseModal('RESULT_LIST')}
+        handleClose={() => handleCloseModal(UserModalType.ResultList)}
       />
     </div>
   );
 };
+enum UserModalType {
+  Schedule,
+  ResultList,
+}
 
 /**
  * Controls the state of the modals
@@ -93,15 +97,15 @@ const UserHome: NextPage = () => {
  */
 function modalReducer(
   state: ModalState,
-  action: { type: 'SHOW' | 'CLOSE'; payload: 'SCHEDULE' | 'RESULT_LIST' },
+  action: { type: 'SHOW' | 'CLOSE'; payload: UserModalType },
 ): ModalState {
   switch (action.type) {
     case 'SHOW':
-      if (action.payload === 'SCHEDULE')
+      if (action.payload === UserModalType.Schedule)
         return { ...state, showScheduleModal: true };
       else return { ...state, showResultListModal: true };
     case 'CLOSE':
-      if (action.payload === 'SCHEDULE')
+      if (action.payload === UserModalType.Schedule)
         return { ...state, showScheduleModal: false };
       else return { ...state, showResultListModal: false };
   }
