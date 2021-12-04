@@ -33,7 +33,7 @@ const UserHome: NextPage = () => {
     dispatch({ type: 'CLOSE', payload: modal });
 
   return (
-    <div style={{ height: '100vh' }}>
+    <div className="vh-100 d-flex flex-column">
       <TheNavbar />
       <div className="d-flex h-100 flex-column align-items-center justify-content-evenly">
         <h1>Bienvenido, David Null</h1>
