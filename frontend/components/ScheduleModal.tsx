@@ -22,7 +22,7 @@ const ScheduleModal = ({ show, handleClose }: ScheduleModalProps) => {
   };
 
   return (
-    <Modal backdrop="static" show={show}>
+    <Modal backdrop="static" show={show} centered>
       <Modal.Header>
         <Modal.Title>Agendar Cita</Modal.Title>
       </Modal.Header>
