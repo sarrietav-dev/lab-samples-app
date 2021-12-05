@@ -2,11 +2,6 @@ import type { NextPage } from 'next';
 import { Button } from 'react-bootstrap';
 import TheNavbar from '../components/TheNavbar';
 
-interface ModalState {
-  showScheduleModal: boolean;
-  showResultListModal: boolean;
-}
-
 /**
  * The main page that an external user sees.\
  * ![image](https://user-images.githubusercontent.com/25210925/144761212-57ee02ad-a046-47c4-8da5-12315621b58c.png)
