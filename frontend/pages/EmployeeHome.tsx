@@ -9,7 +9,7 @@ interface ModalState {
 
 /**
  * The main page that an external user sees.\
- * ![image](https://user-images.githubusercontent.com/25210925/144107131-2d333492-6c67-4511-b772-a9b6b6a21896.png)
+ * ![image](https://user-images.githubusercontent.com/25210925/144761212-57ee02ad-a046-47c4-8da5-12315621b58c.png)
  */
 const EmployeeHome: NextPage = () => {
   return (
