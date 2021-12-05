@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import TheNavbar from '../components/TheNavbar';
 
 /**
- * The main page that an external user sees.\
+ * The main page that an external employee sees.\
  * ![image](https://user-images.githubusercontent.com/25210925/144761212-57ee02ad-a046-47c4-8da5-12315621b58c.png)
  */
 const EmployeeHome: NextPage = () => {
