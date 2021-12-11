@@ -1,6 +1,9 @@
 import express from 'express';
 import helmet from 'helmet';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
@@ -8,7 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(helmet());
 
-app.get('/', (req, res) => {
+mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
+  console.log('Connected to MongoDB'),
+);
+
+app.get('/', (_, res) => {
   res.send('Hi');
 });
 

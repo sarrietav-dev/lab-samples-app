@@ -1,4 +1,5 @@
 FROM node:17-alpine AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock /app/
 RUN yarn install --frozen-lockfile
