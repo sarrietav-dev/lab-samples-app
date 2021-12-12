@@ -6,7 +6,6 @@ import { signUpSchema } from './validation/auth.validation';
 const router = Router();
 
 router.post('/signup', async (req, res) => {
-
   // Validate body
   const { error } = signUpSchema.validate(req.body);
 
@@ -31,5 +30,7 @@ router.post('/signup', async (req, res) => {
     success: true,
   });
 });
+
+router.post('/login', async (req, res) => {});
 
 export default router;
