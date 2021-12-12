@@ -2,6 +2,7 @@ import { Router } from 'express';
 import User from '../models/User';
 import bcrypt from 'bcrypt';
 import { signUpSchema } from './validation/auth.validation';
+import jwt from 'jsonwebtoken';
 
 const router = Router();
 
@@ -50,6 +51,10 @@ router.post('/login', async (req, res) => {
 
   if (!isPasswordValid)
     return res.status(400).json({ error: 'Password is invalid' });
+
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
+    expiresIn: '24h',
+  });
 });
 
 export default router;
