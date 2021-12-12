@@ -17,6 +17,8 @@ router.post('/signup', async (req, res) => {
   await newUser.save();
 
   res.status(200).json({
-    success: true
-  })
+    success: true,
+  });
 });
+
+export default router;
