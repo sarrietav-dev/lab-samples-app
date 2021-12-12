@@ -5,6 +5,12 @@ import { postValidation } from './validation/appointments.validation';
 
 const router = Router();
 
+router.get('/', async (req: AuthenticatedRequest, res) => {
+  const userAppointments = Appointment.find({ userId: req.user?.uid });
+
+  res.status(200).json({ items: userAppointments });
+});
+
 router.post('/', async (req: AuthenticatedRequest, res) => {
   const { error } = (await postValidation()).validate(req.body);
 
