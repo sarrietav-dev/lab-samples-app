@@ -14,7 +14,7 @@ FROM node:17-alpine AS runner
 WORKDIR /app
 
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist/app.js ./app.js
+COPY --from=builder /app/dist ./
 
 EXPOSE 5000
 ENV PORT 5000
