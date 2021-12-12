@@ -10,10 +10,10 @@ interface User {
 export default model<User>(
   'User',
   new Schema<User>({
-    name: String,
-    email: String,
-    password: String,
-    role: String,
+    name: {type: Schema.Types.String, required: true},
+    email: {type: Schema.Types.String, required: true},
+    password: {type: Schema.Types.String, required: true, select: false},
+    role: {type: Schema.Types.String, required: true},
   }),
 );
 
