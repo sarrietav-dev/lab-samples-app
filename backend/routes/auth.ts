@@ -40,10 +40,12 @@ router.post('/login', async (req, res) => {
 
   const { email, password } = req.body;
 
+  // Get an user with the given email
   const user = await User.findOne({ email });
 
   if (!user) return res.status(400).json({ error: 'User not found' });
 
+  // Check if the given password is valid
   const isPasswordValid = await bcrypt.compare(
     password,
     user.password.toString(),
@@ -52,6 +54,7 @@ router.post('/login', async (req, res) => {
   if (!isPasswordValid)
     return res.status(400).json({ error: 'Password is invalid' });
 
+  // Sign JWT to enable token authentication
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
     expiresIn: '24h',
   });
