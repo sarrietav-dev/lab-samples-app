@@ -1,7 +1,7 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const TestTypeSchema = new Schema({
   name: String,
 });
 
-export default model('TestType', TestTypeSchema);
+export default model("TestType", TestTypeSchema);
