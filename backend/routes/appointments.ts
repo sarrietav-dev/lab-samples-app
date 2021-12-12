@@ -6,11 +6,11 @@ import { postValidation } from './validation/appointments.validation';
 const router = Router();
 
 router.post('/', async (req: AuthenticatedRequest, res) => {
-  const { error, value } = (await postValidation()).validate(req.body);
+  const { error } = (await postValidation()).validate(req.body);
 
   if (error) return res.status(400).json({ error: error.message });
 
-  const { date, type } = value;
+  const { date, type } = req.body;
 
   const appointment = new Appointment({
     date,
