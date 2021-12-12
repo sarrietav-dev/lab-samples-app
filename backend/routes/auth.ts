@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import User from '../models/User';
 import bcrypt from 'bcrypt';
-import { signUpSchema } from './validation/auth.validation';
+import { logInSchema, signUpSchema } from './validation/auth.validation';
 import jwt from 'jsonwebtoken';
 
 const router = Router();
@@ -34,7 +34,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   // Validate body
-  const { error } = signUpSchema.validate(req.body);
+  const { error } = logInSchema.validate(req.body);
 
   if (error) return res.status(400).json({ error: error.message });
 
