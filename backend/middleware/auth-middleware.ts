@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 import { AuthenticatedRequest } from '../types/request';
 
-const authenticateJWT: RequestHandler = (
+export const authenticateJWT: RequestHandler = (
   req: AuthenticatedRequest,
   res,
   next,
