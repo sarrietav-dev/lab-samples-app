@@ -1,11 +1,15 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
-const { Date, ObjectId, String } = Schema.Types;
+interface AppointmentSchema {
+  userId: string;
+  date: Date;
+  type: String;
+}
 
-const AppointmentSchema = new Schema({
-  userId: ObjectId,
-  date: Date,
-  type: String,
+const AppointmentSchema = new Schema<AppointmentSchema>({
+  userId: Schema.Types.ObjectId,
+  date: Schema.Types.Date,
+  type: Schema.Types.String,
 });
 
-export default model("Appointment", AppointmentSchema);
+export default model<AppointmentSchema>('Appointment', AppointmentSchema);
