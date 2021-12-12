@@ -52,9 +52,13 @@ router.post('/login', async (req, res) => {
     return res.status(403).json({ message: 'Password is invalid' });
 
   // Sign JWT to enable token authentication
-  const token = jwt.sign({ uid: user.id }, process.env.JWT_SECRET!, {
-    expiresIn: '24h',
-  });
+  const token = jwt.sign(
+    { uid: user.id, role: user.role },
+    process.env.JWT_SECRET!,
+    {
+      expiresIn: '24h',
+    },
+  );
 
   return res.status(200).json({
     token,
