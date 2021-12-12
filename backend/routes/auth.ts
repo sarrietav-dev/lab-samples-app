@@ -36,20 +36,20 @@ router.post('/login', async (req, res) => {
   // Validate body
   const { error } = logInSchema.validate(req.body);
 
-  if (error) return res.status(400).json({ error: error.message });
+  if (error) return res.status(400).json({ message: error.message });
 
   const { email, password } = req.body;
 
   // Get an user with the given email
   const user = await User.findOne({ email });
 
-  if (!user) return res.status(400).json({ error: 'User not found' });
+  if (!user) return res.status(404).json({ message: 'User not found' });
 
   // Check if the given password is valid
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid)
-    return res.status(400).json({ error: 'Password is invalid' });
+    return res.status(403).json({ message: 'Password is invalid' });
 
   // Sign JWT to enable token authentication
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
