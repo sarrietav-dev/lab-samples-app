@@ -1,18 +1,18 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 interface User {
-  name: String;
-  email: String;
-  password: String;
-  role: String;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
 }
 
 export default model<User>(
-  "User",
+  'User',
   new Schema<User>({
     name: { type: Schema.Types.String, required: true },
     email: { type: Schema.Types.String, required: true },
-    password: { type: Schema.Types.String, required: true, select: false },
+    password: { type: Schema.Types.String, required: true },
     role: { type: Schema.Types.String, required: true },
-  })
+  }),
 );
