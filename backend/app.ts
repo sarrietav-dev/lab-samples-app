@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoute from './routes/auth';
 import appointmentsRoute from './routes/appointments';
+import testTypesRoute from './routes/test-types';
 import { authenticateJWT } from './middleware/auth-middleware';
 
 dotenv.config();
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
 
 app.use('/api/auth', authRoute);
 app.use('/api/appointments', authenticateJWT, appointmentsRoute);
+app.use('/api/test-types', testTypesRoute);
 
 app.get('/', (_, res) => {
   res.send('Hi');
