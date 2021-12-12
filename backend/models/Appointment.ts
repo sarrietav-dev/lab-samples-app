@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const { Date, ObjectId, String } = Schema.Types;
 
@@ -8,4 +8,4 @@ const AppointmentSchema = new Schema({
   type: String,
 });
 
-export default model('Appointment', AppointmentSchema);
+export default model("Appointment", AppointmentSchema);
