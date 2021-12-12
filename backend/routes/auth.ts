@@ -31,6 +31,11 @@ router.post('/signup', async (req, res) => {
   });
 });
 
-router.post('/login', async (req, res) => {});
+router.post('/login', async (req, res) => {
+  // Validate body
+  const { error } = signUpSchema.validate(req.body);
+
+  if (error) return res.status(400).json({ error: error.message });
+});
 
 export default router;
