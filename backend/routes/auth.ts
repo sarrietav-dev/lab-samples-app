@@ -36,6 +36,12 @@ router.post('/login', async (req, res) => {
   const { error } = signUpSchema.validate(req.body);
 
   if (error) return res.status(400).json({ error: error.message });
+
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) return res.status(400).json({ error: 'User not found' });
 });
 
 export default router;
