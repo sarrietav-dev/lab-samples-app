@@ -11,10 +11,12 @@ export const authenticateJWT: RequestHandler = (
 
   if (authorization) {
     const token = authorization.split(' ')[1];
-    jwt.verify(token, process.env.JWT_SECRET!, (err, uid) => {
+    jwt.verify(token, process.env.JWT_SECRET!, (err, payload) => {
       if (err) return res.status(403).json({ message: 'Token is not valid' });
 
-      req.uid = `${uid}`;
+      const { uid, role } = <{ uid: string; role: string }>payload;
+
+      req.user = { uid, role };
 
       next();
     });

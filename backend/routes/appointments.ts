@@ -10,12 +10,17 @@ router.post('/', async (req: AuthenticatedRequest, res) => {
 
   if (error) return res.status(400).json({ error: error.message });
 
-  const { date, type } = req.body;
+  const {
+    user,
+    body: { date, type },
+  } = req;
+
+  if (!user) return res.status(403).json({ message: 'Not authenticated' });
 
   const appointment = new Appointment({
     date,
     type,
-    userId: req.uid,
+    userId: user.uid,
   });
 
   await appointment.save();
