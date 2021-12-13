@@ -14,6 +14,11 @@ router.post('/signup', async (req, res) => {
 
   const { name, email, password } = req.body;
 
+  const existingEmails = await User.find({ email });
+
+  if (existingEmails)
+    return res.status(409).json({ error: 'Email already exist' });
+
   // Create new User model
   const newUser = new User({
     name,
@@ -72,6 +77,11 @@ export const signUpEmployeeController: RequestHandler = async (req, res) => {
   if (error) return res.status(400).json({ error: error.message });
 
   const { name, email, password } = req.body;
+
+  const existingEmails = await User.find({ email });
+
+  if (existingEmails)
+    return res.status(409).json({ error: 'Email already exist' });
 
   // Create new User model
   const newUser = new User({
