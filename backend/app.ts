@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import authRoute, { signinEmployee } from './routes/auth';
+import authRoute, { signinEmployeeController } from './routes/auth';
 import appointmentsRoute, {
   appointmentResolveController,
 } from './routes/appointments';
@@ -27,7 +27,7 @@ app.use('/api/auth', authRoute);
 app.post(
   '/api/auth/signin/employee',
   authenticateRole('admin'),
-  signinEmployee,
+  signinEmployeeController,
 );
 app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.patch(

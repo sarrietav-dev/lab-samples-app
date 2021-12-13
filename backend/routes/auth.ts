@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
 
 export default router;
 
-export const signinEmployee: RequestHandler = async (req, res) => {
+export const signinEmployeeController: RequestHandler = async (req, res) => {
   // Validate body
   const { error } = signUpSchema.validate(req.body);
 
