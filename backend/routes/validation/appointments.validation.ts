@@ -16,3 +16,7 @@ export const postValidation = async () => {
       .required(),
   });
 };
+
+export const resolveValidation = Joi.object({
+  details: Joi.string().required(),
+});

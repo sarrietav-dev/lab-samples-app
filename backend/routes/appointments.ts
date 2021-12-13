@@ -1,7 +1,10 @@
 import { RequestHandler, Router } from 'express';
 import Appointment from '../models/Appointment';
 import { AuthenticatedRequest } from '../types/request';
-import { postValidation } from './validation/appointments.validation';
+import {
+  postValidation,
+  resolveValidation,
+} from './validation/appointments.validation';
 import { Express } from 'express';
 
 const router = Router();
@@ -41,6 +44,10 @@ export const appointmentResolveController: RequestHandler = async (
   req,
   res,
 ) => {
+  const { error } = resolveValidation.validate(req.body);
+
+  if (error) return res.status(400).json({ message: error.message });
+
   const appointment = await Appointment.findById(req.params.id);
 
   if (!appointment)
