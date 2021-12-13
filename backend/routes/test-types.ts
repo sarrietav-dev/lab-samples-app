@@ -20,10 +20,7 @@ router.post('/', async (req, res) => {
       message: "There's a test whose name is equal to the given test",
     });
 
-  const testType = new TestType({
-    name,
-    activeTests: 0,
-  });
+  const testType = new TestType({ name });
 
   await testType.save();
 
