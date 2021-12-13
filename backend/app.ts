@@ -24,12 +24,12 @@ mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
 );
 
 app.use('/api/auth', authRoute);
-app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.patch(
   '/api/appointments/resolve/:id',
   authenticateRole('employee'),
   appointmentResolveController,
 );
+app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.use('/api/test-types', authenticateRole('employee'), testTypesRoute);
 
 app.get('/', (_, res) => {
