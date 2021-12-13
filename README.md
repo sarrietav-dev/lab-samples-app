@@ -44,7 +44,7 @@ A more detailed walkthrough is available in the MongoDB Atlas docs: [Get Startet
 
 #### Choose your most deepest secret
 
-When you figure out which secret is, paste it in the JWT_SECRET variable in the .env file.
+When you figure out which secret is, paste it in the [JWT_SECRET](https://github.com/sarrietav-dev/lab-samples-app/blob/d506b914324a4038dc6f35540a32280d5d9f05f8/backend/.env.sample#L2) variable in the .env file.
 
 ### Using Docker and Docker Compose
 
