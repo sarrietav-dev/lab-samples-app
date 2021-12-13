@@ -29,7 +29,6 @@ app.post(
   authenticateRole('admin'),
   signUpEmployeeController,
 );
-app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.patch(
   '/api/appointments/resolve/:id',
   authenticateRole('employee'),
