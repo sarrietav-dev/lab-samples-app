@@ -5,7 +5,6 @@ import {
   postValidation,
   resolveValidation,
 } from './validation/appointments.validation';
-import { Express } from 'express';
 
 const router = Router();
 
