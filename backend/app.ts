@@ -42,6 +42,6 @@ app.get('/', (_, res) => {
   res.send('Hi');
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('The server is up and running 🏎🏁 - url: http://localhost:5000');
 });
