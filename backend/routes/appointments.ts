@@ -59,6 +59,7 @@ export const appointmentResolveController: RequestHandler = async (
       .json({ message: 'The appointment was already resolved' });
 
   appointment.details = req.body.details;
+  appointment.resolved = true;
   await appointment.save();
 
   res.status(204).json({ message: 'The appointment was resolved' });
