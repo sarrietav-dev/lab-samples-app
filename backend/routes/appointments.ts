@@ -51,11 +51,11 @@ export const appointmentResolveController: RequestHandler = async (
   const appointment = await Appointment.findById(req.params.id);
 
   if (!appointment)
-    return res.send(404).json({ message: 'The appointment was not found' });
+    return res.status(404).json({ message: 'The appointment was not found' });
 
   if (appointment.resolved)
     return res
-      .send(403)
+      .status(403)
       .json({ message: 'The appointment was already resolved' });
 
   appointment.details = req.body.details;
