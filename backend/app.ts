@@ -8,10 +8,7 @@ import appointmentsRoute, {
   appointmentResolveController,
 } from './routes/appointments';
 import testTypesRoute from './routes/test-types';
-import {
-  authenticateEmployee,
-  authenticateJWT,
-} from './middleware/auth-middleware';
+import { authenticateRole } from './middleware/auth-middleware';
 
 dotenv.config();
 const app = express();
@@ -27,13 +24,13 @@ mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
 );
 
 app.use('/api/auth', authRoute);
-app.use('/api/appointments', authenticateJWT, appointmentsRoute);
+app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.patch(
   '/api/appointments/resolve/:id',
-  authenticateEmployee,
+  authenticateRole('employee'),
   appointmentResolveController,
 );
-app.use('/api/test-types', authenticateEmployee, testTypesRoute);
+app.use('/api/test-types', authenticateRole('employee'), testTypesRoute);
 
 app.get('/', (_, res) => {
   res.send('Hi');
