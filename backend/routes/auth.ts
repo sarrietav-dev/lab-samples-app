@@ -27,9 +27,7 @@ router.post('/signup', async (req, res) => {
   await newUser.save();
 
   // Send a success response.
-  return res.status(200).json({
-    success: true,
-  });
+  return res.status(204).send()
 });
 
 router.post('/login', async (req, res) => {

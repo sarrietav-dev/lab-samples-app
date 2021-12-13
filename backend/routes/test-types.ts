@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   });
 
   if (testTypesWithTheSameName.length !== 0)
-    return res.status(400).json({
+    return res.status(409).json({
       message: "There's a test whose name is equal to the given test",
     });
 

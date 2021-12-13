@@ -34,7 +34,7 @@ router.post('/', async (req: AuthenticatedRequest, res) => {
 
   await appointment.save();
 
-  res.status(200).send();
+  res.status(201).send();
 });
 
 export default router;
