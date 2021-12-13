@@ -6,8 +6,8 @@ interface TestType {
 }
 
 const TestTypeSchema = new Schema<TestType>({
-  name: Schema.Types.String,
-  activeTests: Schema.Types.Number,
+  name: { type: Schema.Types.String, required: true },
+  activeTests: { type: Schema.Types.Number, default: 0 },
 });
 
 export default model<TestType>('TestType', TestTypeSchema);
