@@ -1,5 +1,6 @@
 import { RequestHandler, Router } from 'express';
 import Appointment from '../models/Appointment';
+import TestType from '../models/TestType';
 import { AuthenticatedRequest } from '../types/request';
 import {
   postValidation,
@@ -24,15 +25,24 @@ router.post('/', async (req: AuthenticatedRequest, res) => {
     body: { date, type },
   } = req;
 
-  if (!user) return res.status(403).json({ message: 'Not authenticated' });
+  const appointmentType = await TestType.findOne({ name: type });
+
+  if (!appointmentType)
+    return res
+      .status(404)
+      .json({ message: "A test type with the given name doesn't exist" });
 
   const appointment = new Appointment({
     date,
     type,
-    userId: user.uid,
+    userId: user?.uid,
   });
 
   await appointment.save();
+
+  appointmentType.activeTests++;
+
+  await appointmentType.save();
 
   res.status(201).send();
 });

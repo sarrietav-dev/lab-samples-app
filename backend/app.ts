@@ -35,6 +35,7 @@ app.patch(
   authenticateRole('employee'),
   appointmentResolveController,
 );
+app.use('/api/appointments', authenticateRole('client'), appointmentsRoute);
 app.use('/api/test-types', authenticateRole('employee'), testTypesRoute);
 
 app.get('/', (_, res) => {
