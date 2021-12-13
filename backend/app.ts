@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoute from './routes/auth';
-import appointmentsRoute from './routes/appointments';
+import appointmentsRoute, {
+  appointmentResolveController,
+} from './routes/appointments';
 import testTypesRoute from './routes/test-types';
 import {
   authenticateEmployee,
@@ -26,6 +28,11 @@ mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
 
 app.use('/api/auth', authRoute);
 app.use('/api/appointments', authenticateJWT, appointmentsRoute);
+app.patch(
+  '/api/appointments/resolve/:id',
+  authenticateEmployee,
+  appointmentResolveController,
+);
 app.use('/api/test-types', authenticateEmployee, testTypesRoute);
 
 app.get('/', (_, res) => {
