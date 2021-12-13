@@ -1,7 +1,8 @@
-import { Router } from 'express';
+import { RequestHandler, Router } from 'express';
 import Appointment from '../models/Appointment';
 import { AuthenticatedRequest } from '../types/request';
 import { postValidation } from './validation/appointments.validation';
+import { Express } from 'express';
 
 const router = Router();
 
@@ -35,3 +36,23 @@ router.post('/', async (req: AuthenticatedRequest, res) => {
 });
 
 export default router;
+
+export const appointmentResolveController: RequestHandler = async (
+  req,
+  res,
+) => {
+  const appointment = await Appointment.findById(req.params.id);
+
+  if (!appointment)
+    return res.send(404).json({ message: 'The appointment was not found' });
+
+  if (appointment.resolved)
+    return res
+      .send(403)
+      .json({ message: 'The appointment was already resolved' });
+
+  appointment.details = req.body.details;
+  await appointment.save();
+
+  res.status(204).json({ message: 'The appointment was resolved' });
+};
