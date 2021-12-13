@@ -6,7 +6,7 @@ import { postValidation } from './validation/appointments.validation';
 const router = Router();
 
 router.get('/', async (req: AuthenticatedRequest, res) => {
-  const userAppointments = Appointment.find({ userId: req.user?.uid });
+  const userAppointments = await Appointment.find({ userId: req.user?.uid });
 
   res.status(200).json({ items: userAppointments });
 });
