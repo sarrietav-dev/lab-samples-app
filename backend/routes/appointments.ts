@@ -67,9 +67,14 @@ export const appointmentResolveController: RequestHandler = async (
       .status(403)
       .json({ message: 'The appointment was already resolved' });
 
+  const type = await TestType.findOne({ name: appointment.type.toString() });
+
   appointment.details = req.body.details;
   appointment.resolved = true;
   await appointment.save();
+
+  type!.activeTests--;
+  await type!.save();
 
   res.status(204).json({ message: 'The appointment was resolved' });
 };
