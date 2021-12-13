@@ -20,7 +20,7 @@ app.use(cors());
 app.use(helmet());
 
 mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
-  console.log('Connected to MongoDB'),
+  console.log('🟢 Connected to MongoDB Atlas 🟢'),
 );
 
 app.use('/api/auth', authRoute);
@@ -42,5 +42,5 @@ app.get('/', (_, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('UP');
+  console.log('The server is up and running 🏎🏁 - url: http://localhost:5000');
 });
