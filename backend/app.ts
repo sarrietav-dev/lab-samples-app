@@ -19,9 +19,10 @@ app.use(cors());
 
 app.use(helmet());
 
-mongoose.connect(process.env.MONGODB_CONN_STRING!, (_) =>
-  console.log('🟢 Connected to MongoDB Atlas 🟢'),
-);
+mongoose.connect(process.env.MONGODB_CONN_STRING!, (error) => {
+  if (error) return console.log('🛑 Error connecting to MongoDB Atlas 🛑');
+  console.log('🟢 Connected to MongoDB Atlas 🟢');
+});
 
 app.use('/api/auth', authRoute);
 app.post(
