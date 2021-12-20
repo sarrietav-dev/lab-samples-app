@@ -5,11 +5,10 @@ import { AuthenticatedRequest } from '../types/request';
 export const authenticateRole =
   (userRole: 'client' | 'employee' | 'admin'): RequestHandler =>
   (req: AuthenticatedRequest, res, next) => {
-    const { authorization } = req.headers;
+    const { access } = req.cookies as { [key: string]: string };
 
-    if (authorization) {
-      const token = authorization.split(' ')[1];
-      jwt.verify(token, process.env.JWT_SECRET!, (err, payload) => {
+    if (access) {
+      jwt.verify(access, process.env.JWT_SECRET!, (err, payload) => {
         if (err) return res.status(403).json({ message: 'Token is not valid' });
 
         const { uid, role } = <{ uid: string; role: string }>payload;
