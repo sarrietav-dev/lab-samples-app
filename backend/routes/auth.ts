@@ -63,9 +63,13 @@ router.post('/login', async (req, res) => {
     },
   );
 
-  return res.status(200).json({
-    token,
+  res.cookie('access', token, {
+    httpOnly: true,
+    maxAge: 3600000,
+    secure: process.env.NODE_ENV === 'production',
   });
+
+  return res.sendStatus(200);
 });
 
 export default router;
