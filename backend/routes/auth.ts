@@ -63,9 +63,9 @@ router.post('/login', async (req, res) => {
     },
   );
 
-  return res.status(200).json({
-    token,
-  });
+  res.cookie('access', token, { httpOnly: true, maxAge: 3600000 });
+
+  return res.redirect('http://localhost:3000');
 });
 
 export default router;
